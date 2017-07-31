@@ -33,11 +33,6 @@ def login(request, template_name='registration/login.html',
             if not redirect_to:
                 redirect_to = settings.LOGIN_REDIRECT_URL
 
-            # Heavier security check -- don't allow redirection to a different
-            # host.
-            elif netloc and netloc != request.get_host():
-                redirect_to = settings.LOGIN_REDIRECT_URL
-
             # Okay, security checks complete. Log the user in.
             auth_login(request, form.get_user())
 
